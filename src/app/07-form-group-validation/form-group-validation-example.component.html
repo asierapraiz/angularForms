@@ -1,0 +1,18 @@
+<h2>Form Group Validation</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label for="password">Password (required)</label>
+  <input formControlName="password" id="password" type="password" />
+  <div *ngIf="passwordIsInvalid" class="error">
+    Password must be at least 6 characters.
+  </div>
+
+  <label for="confirm">Confirm Password (required)</label>
+  <input formControlName="confirm" id="confirm" type="password" />
+
+  <div *ngIf="passwordsDoNotMatch" class="error">
+    Passwords must match.
+  </div>
+
+  <button>Create Account</button>
+</form>

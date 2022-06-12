@@ -1,0 +1,12 @@
+<h2>Input Validation</h2>
+
+<label for="email">Email</label>
+<input [formControl]="email" id="email" type="email" />
+
+<div *ngIf="email.touched && email.hasError('required')" class="error">
+  email is required
+</div>
+
+<div *ngIf="email.touched && email.hasError('email')" class="error">
+  invalid email address
+</div>

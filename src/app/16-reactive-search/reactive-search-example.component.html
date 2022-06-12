@@ -1,0 +1,10 @@
+<h2>Reactive Search Component</h2>
+
+<form [formGroup]="searchForm">
+  <label for="search">Search Giphy</label>
+  <input formControlName="search" id="search" />
+</form>
+
+<a *ngFor="let result of results | async" [href]="result.url" target="_blank">
+  <img [src]="result.images.downsized.url" />
+</a>

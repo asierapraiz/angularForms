@@ -1,0 +1,17 @@
+<h2>Form Array Example</h2>
+
+<form *ngIf="orders | async; let orders; else loading" [formGroup]="form" (ngSubmit)="submit(orders)" class="checkbox-list">
+  <span class="label">Checkbox List Orders</span>
+  <label formArrayName="orders" *ngFor="let order of orderControls; let i = index">
+    <input type="checkbox" [formControlName]="i">
+    {{orders[i].name}}
+  </label>
+  <br>
+  <div *ngIf="!form.valid" class="error">At least one order must be selected</div>
+
+  <button [disabled]="!form.valid">submit</button>
+</form>
+
+<ng-template #loading>
+  Loading Orders...
+</ng-template>

@@ -1,0 +1,24 @@
+<h2>Dynamic Form Controls Example</h2>
+
+<form *ngIf="orders | async; let orders; else loading" [formGroup]="form" (ngSubmit)="submit()">
+  <!-- dynamic select -->
+  <label for="orders">Select Order</label>
+  <select formControlName="selectOrder" id="orders">
+    <option *ngFor="let order of orders; let i = index" [value]="orders[i].id">
+      {{orders[i].name}}
+    </option>
+  </select>
+
+  <!-- dynamic radio list -->
+  <span class="label">Radio Orders</span>
+  <label *ngFor="let order of orders; let i = index">
+    <input type="radio" formControlName="radioOrder" name="radioOrder" [value]="orders[i].id" />
+    {{orders[i].name}}
+  </label>
+  
+  <button>submit</button>
+</form>
+
+<ng-template #loading>
+  Loading Orders...
+</ng-template>

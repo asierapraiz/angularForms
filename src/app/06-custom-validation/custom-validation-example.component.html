@@ -1,0 +1,17 @@
+<h2>Custom Validation</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label for="password">Password</label>
+  <input formControlName="password" id="password" type="password" />
+
+  <ng-container *ngIf="password.touched">
+    <div *ngIf="password.hasError('minlength')" class="error">
+      Password must be at least six characters long.
+    </div>
+    <div *ngIf="password.hasError('invalidPassword')" class="error">
+      Passwords must contain at least one uppercase character and one number.
+    </div>
+  </ng-container>
+
+  <button>Submit</button>
+</form>

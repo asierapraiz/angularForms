@@ -1,0 +1,14 @@
+<h2>Template Forms</h2>
+
+<form #exampleForm="ngForm" (ngSubmit)="submit(exampleForm)">
+  <label for="search">Search</label>
+  <input [(ngModel)]="search" name="search" type="search" required #searchControl="ngModel" />
+
+  <div *ngIf="searchControl.touched && searchControl.hasError('required')" class="error">
+    search is required
+  </div>
+
+  <button>Submit</button>
+</form>
+
+<p>Search Value: {{search}}</p>
